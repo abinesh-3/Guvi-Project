@@ -26,7 +26,7 @@ User u = User.builder()
 .email(req.getEmail())
 .password(encoder.encode(req.getPassword()))
 .role(Role.USER)
-.enabled(false)
+.enabled(true)// auto verified for deployment railway
 .verificationToken(UUID.randomUUID().toString())
 .tokenExpiry(LocalDateTime.now().plusHours(24))
 .build();
