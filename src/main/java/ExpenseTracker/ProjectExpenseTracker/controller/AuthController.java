@@ -15,7 +15,7 @@ public class AuthController {
 private final UserService users;
 
 
-@GetMapping("/login")
+@GetMapping("/")
 public String login() { return "login"; }
 
 
