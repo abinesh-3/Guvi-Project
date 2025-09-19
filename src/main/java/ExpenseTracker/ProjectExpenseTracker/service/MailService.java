@@ -7,14 +7,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 
-@Service @RequiredArgsConstructor
+@Service
 public class MailService {
-private final JavaMailSender mailSender;
+// private final JavaMailSender mailSender;
 
 
-public void send(String to, String subject, String text) {
-SimpleMailMessage msg = new SimpleMailMessage();
-msg.setTo(to); msg.setSubject(subject); msg.setText(text);
-mailSender.send(msg);
-}
+// public void send(String to, String subject, String text) {
+// SimpleMailMessage msg = new SimpleMailMessage();
+// msg.setTo(to); msg.setSubject(subject); msg.setText(text);
+// mailSender.send(msg);
 }

@@ -31,8 +31,8 @@ User u = User.builder()
 .tokenExpiry(LocalDateTime.now().plusHours(24))
 .build();
 users.save(u);
-String link = appUrl + "/verify?token=" + u.getVerificationToken();
-mail.send(u.getEmail(), "Verify your SmartSpend account", "Click to verify: " + link);
+// String link = appUrl + "/verify?token=" + u.getVerificationToken();
+// mail.send(u.getEmail(), "Verify your SmartSpend account", "Click to verify: " + link);
 return u;
 }
 
@@ -52,7 +52,7 @@ users.findByEmail(email).ifPresent(u -> {
 u.setResetToken(UUID.randomUUID().toString());
 u.setTokenExpiry(LocalDateTime.now().plusHours(2));
 users.save(u);
-mail.send(email, "Reset your SmartSpend password", appUrl + "/reset/confirm?token="+u.getResetToken());
+// mail.send(email, "Reset your SmartSpend password", appUrl + "/reset/confirm?token="+u.getResetToken());
 });
 }
 
