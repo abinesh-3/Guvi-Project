@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/app.css}" rel="stylesheet" />
+<title>Login</title>
+</head>
+<body>
+<div class="card">
+<h2 class="appdata">EXTRACE Login</h2>
+<p th:text="${msg}"></p>
+<form th:action="@{/login}" method="post">
+<input type="email" name="username" placeholder="Email" required />
+<input type="password" name="password" placeholder="Password" required />
+<button type="submit">Login</button>
+</form>
+<p><a th:href="@{/register}">Register</a> · <a th:href="@{/reset}">Forgot password?</a></p>
+</div>
+</body>
+</html>

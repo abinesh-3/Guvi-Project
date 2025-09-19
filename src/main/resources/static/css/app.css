@@ -1,0 +1,11 @@
+body { font-family: system-ui, sans-serif; background:#f7f7fb; margin:0; }
+nav { display:flex; justify-content: center; align-items: center; gap:12px; padding:12px; background:#E62727; border-bottom:1px solid #eee; }
+.container { padding:16px; }
+.card { max-width:420px; margin:60px auto; background:white; padding:24px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,.06); }
+input, select, button,.btn { padding:8px 10px; margin:6px; border:1px solid #ddd; border-radius:8px; }
+table { width:100%; background:white; border-collapse:collapse; margin-top:16px; }
+th, td { border-bottom:1px solid #eee; padding:8px; text-align:left; }
+button, a.btn { background:#111827; color:white; border:none; cursor:pointer; }
+a.btn {  display: flex; max-width:35px; float: right; top: 200px; }
+body {background-color: #DCDCDC;} .appdata{display:flex; justify-content: center; align-items: center; }
+

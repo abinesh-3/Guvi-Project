@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/app.css}" rel="stylesheet" />
+<title>Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+    <nav>
+<a th:href="@{/dashboard}">Dashboard</a>
+<a th:href="@{/expenses}">Expenses</a>
+<a th:href="@{/budgets}">Budgets</a>
+<a th:href="@{/reports/pdf}">PDF</a>
+<a th:href="@{/reports/excel}">Excel</a>
+<a th:href="@{/logout}">Logout</a>
+</nav>
+<h2 class="appdata">Welcome to EXTRACE</h2>
+<p class="appdata">Today: <span th:text="${today}"></span></p>
+<div id="alerts"></div>
+
+<script>
+const socket = new SockJS('/ws');
+const stomp = Stomp.over(socket);
+stomp.connect({}, () => {
+stomp.subscribe('/user/topic/alerts', msg => {
+const div = document.getElementById('alerts');
+const p = document.createElement('p');
+p.innerText = msg.body;
+div.prepend(p);
+});
+});
+</script>
+</body>
+</html>
