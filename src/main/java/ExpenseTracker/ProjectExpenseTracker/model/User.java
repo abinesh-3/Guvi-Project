@@ -30,8 +30,8 @@ private Role role = Role.USER;
 @Builder.Default
 private boolean enabled = false;
 
-private String verificationToken; // email verification
-private String resetToken; // password reset
+private String verificationToken;
+private String resetToken;
 private LocalDateTime tokenExpiry;
 }
 

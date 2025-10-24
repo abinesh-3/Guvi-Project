@@ -10,12 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller @RequiredArgsConstructor
+@Controller
+@RequiredArgsConstructor
+@RequestMapping("/auth")
 public class AuthController {
 private final UserService users;
 
 
-@GetMapping("/")
+@GetMapping("/login")
 public String login() { return "login"; }
 
 

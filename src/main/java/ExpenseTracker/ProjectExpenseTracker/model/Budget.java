@@ -11,12 +11,24 @@ import java.math.BigDecimal;
 public class Budget {
 @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
+    private BigDecimal amount;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 
 @ManyToOne(fetch = FetchType.LAZY)
 private User user;
 
 
 private String category;
-private BigDecimal monthlyLimit; // per month
+private BigDecimal monthlyLimit;
 }

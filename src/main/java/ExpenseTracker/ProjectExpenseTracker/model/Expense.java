@@ -32,11 +32,11 @@ private BigDecimal amount;
 
 
 @NotBlank
-private String category; // e.g., Food, Travel, Rent
+private String category; 
 
 
 @Enumerated(EnumType.STRING)
-private ExpenseType type; // EXPENSE / INCOME
+private ExpenseType type;
 
 
 private LocalDate date;
