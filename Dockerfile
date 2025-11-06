@@ -18,14 +18,14 @@ RUN ./mvnw dependency:go-offline
 # Copy the rest of the project
 COPY . .
 
-# 🔧 Make mvnw executable again (important after COPY . .)
+# Fix permissions again
 RUN chmod +x mvnw
 
-# Build the JAR inside Docker
+# Build the JAR
 RUN ./mvnw -B -DskipTests clean package
 
 # Expose the application port
 EXPOSE 8080
 
-# Run the app
-ENTRYPOINT ["java", "-jar", "target/*.jar"]
+# ✅ Run the built JAR (no wildcard)
+ENTRYPOINT ["java", "-jar", "target/ProjectExpenseTracker-0.0.1-SNAPSHOT.jar"]
