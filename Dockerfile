@@ -18,6 +18,9 @@ RUN ./mvnw dependency:go-offline
 # Copy the rest of the project
 COPY . .
 
+# 🔧 Make mvnw executable again (important after COPY . .)
+RUN chmod +x mvnw
+
 # Build the JAR inside Docker
 RUN ./mvnw -B -DskipTests clean package
 
