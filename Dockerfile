@@ -4,10 +4,13 @@ FROM eclipse-temurin:21-jdk
 # Set working directory
 WORKDIR /app
 
-# Copy Maven files first (for dependency caching)
+# Copy Maven wrapper files first (for dependency caching)
 COPY pom.xml .
 COPY mvnw .
 COPY .mvn .mvn
+
+# Make mvnw executable
+RUN chmod +x mvnw
 
 # Download dependencies (cached)
 RUN ./mvnw dependency:go-offline
@@ -18,7 +21,7 @@ COPY . .
 # Build the JAR inside Docker
 RUN ./mvnw -B -DskipTests clean package
 
-# Expose port
+# Expose the application port
 EXPOSE 8080
 
 # Run the app
