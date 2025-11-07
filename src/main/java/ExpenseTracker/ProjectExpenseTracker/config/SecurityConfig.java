@@ -51,7 +51,8 @@ public class SecurityConfig {
                                 "/reset/**",
                                 "/ws/**",
                                 "/error",
-                                "/login"
+                                "/login",
+								"/auth/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
@@ -68,10 +69,7 @@ public class SecurityConfig {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
-                )
-
-                
-                .httpBasic(Customizer.withDefaults());
+                );
 
         return http.build();
     }
