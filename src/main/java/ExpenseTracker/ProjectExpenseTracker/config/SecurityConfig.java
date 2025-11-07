@@ -45,9 +45,7 @@ SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		.csrf(csrf -> csrf.disable())
 		// use a selective request cache so we don't save error/static/root/login requests
 		.requestCache(rc -> rc.requestCache(customRequestCache()))
-		.authorizeHttpRequests(auth -> auth
-			.requestMatchers("/css/**","/register","/verify","/reset/**","/ws/**","/login","/error","/error/**").permitAll()
-			.anyRequest().authenticated())
+		.authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
 		.formLogin(form -> form.loginPage("/login").permitAll().defaultSuccessUrl("/dashboard"))
 		.logout(logout -> logout
 			.logoutSuccessUrl("/login?logout")
