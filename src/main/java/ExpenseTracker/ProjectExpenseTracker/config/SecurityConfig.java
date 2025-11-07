@@ -38,7 +38,7 @@ SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 http
 .csrf(csrf -> csrf.disable())
 .authorizeHttpRequests(auth -> auth
-.requestMatchers("/css/**","/register","/verify","/reset/**","/ws/**","/login","/error","/error/**").permitAll()
+.requestMatchers("/css/**","/register","/verify","/reset/**","/ws/**","/login","/error","/error/**","/","/favicon.ico").permitAll()
 .anyRequest().authenticated())
 .formLogin(form -> form.loginPage("/login").permitAll().defaultSuccessUrl("/dashboard", true))
 .logout(logout -> logout
