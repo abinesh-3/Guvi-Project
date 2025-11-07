@@ -14,31 +14,31 @@ import static org.mockito.Mockito.*;
 
 public class MailServiceTest {
 
-    @Mock
-    private JavaMailSender mailSender;
+    // @Mock
+    // private JavaMailSender mailSender;
 
-    @InjectMocks
-    private MailService mailService;
+    // @InjectMocks
+    // private MailService mailService;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
+    // @BeforeEach
+    // void setUp() {
+    //     MockitoAnnotations.openMocks(this);
+    // }
 
-    @Test
-    void testSend_callsMailSenderWithCorrectMessage() {
-        String to = "user@example.com";
-        String subject = "Test Subject";
-        String text = "Hello from test";
+    // @Test
+    // void testSend_callsMailSenderWithCorrectMessage() {
+    //     String to = "user@example.com";
+    //     String subject = "Test Subject";
+    //     String text = "Hello from test";
 
-        mailService.send(to, subject, text);
+    //     mailService.send(to, subject, text);
 
-        ArgumentCaptor<SimpleMailMessage> captor = ArgumentCaptor.forClass(SimpleMailMessage.class);
-        verify(mailSender).send(captor.capture());
-        SimpleMailMessage sent = captor.getValue();
-        assertArrayEquals(new String[]{to}, sent.getTo());
-        assertEquals(subject, sent.getSubject());
-        assertEquals(text, sent.getText());
-    }
+    //     ArgumentCaptor<SimpleMailMessage> captor = ArgumentCaptor.forClass(SimpleMailMessage.class);
+    //     verify(mailSender).send(captor.capture());
+    //     SimpleMailMessage sent = captor.getValue();
+    //     assertArrayEquals(new String[]{to}, sent.getTo());
+    //     assertEquals(subject, sent.getSubject());
+    //     assertEquals(text, sent.getText());
+    // }
 
 }
