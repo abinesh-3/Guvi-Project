@@ -38,13 +38,15 @@ SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 http
 .csrf(csrf -> csrf.disable())
 .authorizeHttpRequests(auth -> auth
-.requestMatchers("/css/**","/register","/verify","/reset/**","/ws/**","/login",).permitAll()
+.requestMatchers("/css/**","/register","/verify","/reset/**","/ws/**","/login").permitAll()
 .anyRequest().authenticated())
 .formLogin(form -> form.loginPage("/login").permitAll().defaultSuccessUrl("/dashboard", true))
 .logout(logout -> logout
-            .logoutSuccessUrl("/login?logout")
-            .permitAll()
-);
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+            );
+
+
 return http.build();
 }
 }
