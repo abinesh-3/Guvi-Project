@@ -54,7 +54,7 @@ public class SecurityConfig {
                                 "/login",
 								"/auth/**"
                         ).permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
 
                 
