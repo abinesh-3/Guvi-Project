@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.savedrequest.RequestCache;
 
 
 @Configuration
@@ -32,11 +33,18 @@ UserDetailsService userDetailsService(UserRepository users) {
 		.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 }
 
+@Bean
+RequestCache customRequestCache() {
+	return new CustomRequestCache();
+}
+
 
 @Bean
 SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	http
 		.csrf(csrf -> csrf.disable())
+		// use a selective request cache so we don't save error/static/root/login requests
+		.requestCache(rc -> rc.requestCache(customRequestCache()))
 		.authorizeHttpRequests(auth -> auth
 			.requestMatchers("/css/**","/register","/verify","/reset/**","/ws/**","/login","/error","/error/**").permitAll()
 			.anyRequest().authenticated())
