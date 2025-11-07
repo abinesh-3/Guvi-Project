@@ -17,5 +17,5 @@ public class MailService {
 	// 	msg.setSubject(subject);
 	// 	msg.setText(text);
 	// 	mailSender.send(msg);
-	}
+	// }
 }
