@@ -15,68 +15,80 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    // @Bean
+    // public PasswordEncoder passwordEncoder() {
+    //     return new BCryptPasswordEncoder();
+    // }
 
 
-    @Bean
-    public UserDetailsService userDetailsService(UserRepository users) {
-        return username -> users.findByEmail(username)
-                .map(u -> org.springframework.security.core.userdetails.User
-                        .withUsername(u.getEmail())
-                        .password(u.getPassword())
-                        .disabled(!u.isEnabled())
-                        .roles(u.getRole().name())
-                        .build())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    }
+    // @Bean
+    // public UserDetailsService userDetailsService(UserRepository users) {
+    //     return username -> users.findByEmail(username)
+    //             .map(u -> org.springframework.security.core.userdetails.User
+    //                     .withUsername(u.getEmail())
+    //                     .password(u.getPassword())
+    //                     .disabled(!u.isEnabled())
+    //                     .roles(u.getRole().name())
+    //                     .build())
+    //             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    // }
 
     
-    @Bean
+    // @Bean
+    // public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    //     http
+                
+    //             .csrf(csrf -> csrf.disable())
+
+                
+    //             .authorizeHttpRequests(auth -> auth
+    //                     .requestMatchers(
+    //                             "/css/**",
+    //                             "/js/**",
+    //                             "/images/**",
+    //                             "/register",
+    //                             "/verify",
+    //                             "/reset/**",
+    //                             "/ws/**",
+    //                             "/error",
+    //                             "/login",
+	// 							"/auth/**",
+	// 							"/reports/**",
+	// 							"/expenses/**",
+	// 							"/budgets/**"
+
+
+
+    //                     ).permitAll()
+    //                     .anyRequest().permitAll()
+    //             )
+
+                
+    //             .formLogin(form -> form
+    //                     .loginPage("/login")
+    //                     .permitAll()
+    //                     .defaultSuccessUrl("/dashboard", true)
+    //             )
+
+                
+    //             .logout(logout -> logout
+    //                     .logoutUrl("/logout")
+    //                     .logoutSuccessUrl("/login?logout")
+    //                     .permitAll()
+    //             );
+
+    //     return http.build();
+    // }
+
+	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                
-                .csrf(csrf -> csrf.disable())
-
-                
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/css/**",
-                                "/js/**",
-                                "/images/**",
-                                "/register",
-                                "/verify",
-                                "/reset/**",
-                                "/ws/**",
-                                "/error",
-                                "/login",
-								"/auth/**",
-								"/reports/**",
-								"/expenses/**",
-								"/budgets/**"
-
-
-
-                        ).permitAll()
-                        .anyRequest().permitAll()
-                )
-
-                
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .permitAll()
-                        .defaultSuccessUrl("/dashboard", true)
-                )
-
-                
-                .logout(logout -> logout
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout")
-                        .permitAll()
-                );
-
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .anyRequest().permitAll()
+            )
+            .formLogin(login -> login.disable())
+            .httpBasic(basic -> basic.disable());
         return http.build();
-    }
+	}
 }
