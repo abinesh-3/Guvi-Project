@@ -52,7 +52,13 @@ public class SecurityConfig {
                                 "/ws/**",
                                 "/error",
                                 "/login",
-								"/auth/**"
+								"/auth/**",
+								"/reports/**",
+								"/expenses/**",
+								"/budgets/**"
+
+
+
                         ).permitAll()
                         .anyRequest().permitAll()
                 )
