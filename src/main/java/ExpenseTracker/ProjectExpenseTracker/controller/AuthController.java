@@ -10,9 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller
-@RequiredArgsConstructor
-@RequestMapping("/auth")
+@Controller @RequiredArgsConstructor
 public class AuthController {
 private final UserService users;
 
