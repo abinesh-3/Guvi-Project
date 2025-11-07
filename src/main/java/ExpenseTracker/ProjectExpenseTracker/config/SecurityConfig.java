@@ -15,23 +15,23 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 
-    // @Bean
-    // public PasswordEncoder passwordEncoder() {
-    //     return new BCryptPasswordEncoder();
-    // }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
-    // @Bean
-    // public UserDetailsService userDetailsService(UserRepository users) {
-    //     return username -> users.findByEmail(username)
-    //             .map(u -> org.springframework.security.core.userdetails.User
-    //                     .withUsername(u.getEmail())
-    //                     .password(u.getPassword())
-    //                     .disabled(!u.isEnabled())
-    //                     .roles(u.getRole().name())
-    //                     .build())
-    //             .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    // }
+    @Bean
+    public UserDetailsService userDetailsService(UserRepository users) {
+        return username -> users.findByEmail(username)
+                .map(u -> org.springframework.security.core.userdetails.User
+                        .withUsername(u.getEmail())
+                        .password(u.getPassword())
+                        .disabled(!u.isEnabled())
+                        .roles(u.getRole().name())
+                        .build())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
 
     
     // @Bean
