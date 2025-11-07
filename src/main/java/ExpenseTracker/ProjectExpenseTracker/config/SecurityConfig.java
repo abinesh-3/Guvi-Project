@@ -43,7 +43,6 @@ RequestCache customRequestCache() {
 SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	http
 		.csrf(csrf -> csrf.disable())
-		// use a selective request cache so we don't save error/static/root/login requests
 		.requestCache(rc -> rc.requestCache(customRequestCache()))
 		.authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
 		.formLogin(form -> form.loginPage("/login").permitAll().defaultSuccessUrl("/dashboard"))
