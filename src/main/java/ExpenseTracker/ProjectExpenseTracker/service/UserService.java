@@ -31,8 +31,9 @@ User u = User.builder()
 .tokenExpiry(LocalDateTime.now().plusHours(24))
 .build();
 users.save(u);
-// String link = appUrl + "/verify?token=" + u.getVerificationToken();
-// mail.send(u.getEmail(), "Verify your SmartSpend account", "Click to verify: " + link);
+//emai 
+String link = appUrl + "/verify?token=" + u.getVerificationToken();
+mail.send(u.getEmail(), "Verify your SmartSpend account", "Click to verify: " + link);
 return u;
 }
 
